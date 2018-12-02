@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
@@ -56,7 +57,7 @@ class Handler extends ExceptionHandler
 
         if ($exception instanceof MethodNotAllowedHttpException)
         {
-            return redirect('/')->with('flash', 'Debes iniciar sesión primero para poder acceder a nuestro sistema :)');
+            return redirect('/')->with('rwl', 'Si necesitas ayuda adicional contacta a nuestro administrador.');
         }
 
 
