@@ -23,13 +23,34 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            $this->username() => 'required|string|min:9|max:9',
+            $this->username() => 'required|string',
             'password' => 'required|string'
         ]);
 
         if(Auth::attempt($credentials))
         {
-            return redirect()->route('home');
+//            return redirect()->route('home');
+
+            $user = Auth::user();
+
+            foreach ($user->roles as $role)
+            {
+                $role;
+            }
+
+            // Check user role
+            switch ($role->name)
+            {
+                case 'Admin':
+                    return redirect('/Admin');
+                    break;
+                case 'tutor':
+                    return redirect('/tutor');
+                    break;
+                default:
+                    return redirect('/default');
+                    break;
+            }
         }
         return back()->withErrors([$this->username() => 'Verifica tu usuario y/o contraseña'])
             ->withInput(request([$this->username()]));
