@@ -38,17 +38,24 @@ class LoginController extends Controller
                 $role;
             }
 
-            // Check user role
-            switch ($role->name)
+            // Checking user role and redirecting based on its role.
+            switch ($role->id)
             {
-                case 'Admin':
-                    return redirect('/Admin');
+                case 1:
+                    return redirect('/dashboard');
                     break;
-                case 'tutor':
-                    return redirect('/tutor');
+                case 2:
+                    return redirect('/dashboard');
+                    break;
+                case 3:
+                    return redirect('/dashboard');
+                    break;
+                case 4:
+                    return redirect('/student');
                     break;
                 default:
-                    return redirect('/default');
+                    return back()->withErrors([$this->username() => 'Verifica tu usuario y/o contraseña'])
+                        ->withInput(request([$this->username()]));
                     break;
             }
         }
