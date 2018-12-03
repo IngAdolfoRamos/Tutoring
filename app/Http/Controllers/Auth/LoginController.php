@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-//use http\Env\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -42,16 +41,16 @@ class LoginController extends Controller
             switch ($role->id)
             {
                 case 1:
-                    return redirect('/dashboard');
+                    return redirect('/reports');
                     break;
                 case 2:
-                    return redirect('/dashboard');
+                    return redirect('/reports');
                     break;
                 case 3:
-                    return redirect('/dashboard');
+                    return redirect('/reports');
                     break;
                 case 4:
-                    return redirect('/student');
+                    return redirect('/reports');
                     break;
                 default:
                     return back()->withErrors([$this->username() => 'Verifica tu usuario y/o contraseña'])
