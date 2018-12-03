@@ -63,7 +63,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         //Download reports
-        ParseError::create
+        Permission::create
         ([
             'name' => 'Download reports.',
             'slug' => 'reports.download',
