@@ -19,6 +19,7 @@ class CreateReportsTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->timestamps();
+            $table->foreign('record')->references('record')->on('users');
         });
     }
 
