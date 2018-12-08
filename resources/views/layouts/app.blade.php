@@ -75,7 +75,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 container">
             @if(session()->has('flash'))
                 <div class="alert alert-danger alert-dismissible fade show col-8 offset-2 text-center" role="alert">
                     <strong>Ooops!!</strong>
