@@ -18,12 +18,13 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::middleware(['auth'])->group(function ()
 {
     /* Reports */
+    Route::get('reports/download', 'ReportController@pdf')->name('reports.pdf');
     Route::get('reports', 'ReportController@index')->name('reports.index')->middleware('permission:reports.index');
     Route::get('reports/create', 'ReportController@create')->name('reports.create')->middleware('permission:reports.create');
     Route::post('reports/store', 'ReportController@store')->name('reports.store')->middleware('permission:reports.create');
     Route::get('reports/{report}', 'ReportController@show')->name('reports.show')->middleware('permission:reports.show');
     Route::get('reports/{report}/edit', 'ReportController@edit')->name('reports.edit')->middleware('permission:reports.edit');
-    Route::put('reports/{report}', 'ReportController@update')->name('reports.update')->middleware('permission:reports.edit');
+    Route::put('reports/', 'ReportController@update')->name('reports.update')->middleware('permission:reports.edit');
     Route::get('reports/{report}/download', 'ReportController@download')->name('reports.download')->middleware('reports.download');
 });
 
