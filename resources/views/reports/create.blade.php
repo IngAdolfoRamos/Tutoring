@@ -6,7 +6,7 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-header lead">
-                        Generar nuevo reporte
+                        Reporte del alumno
                     </div>
 
                     <div class="card-body shadow-lg p-3 bg-white rounded">
