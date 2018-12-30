@@ -31,6 +31,7 @@ class LoginController extends Controller
 //            return redirect()->route('home');
 
             $user = Auth::user();
+            
 
             foreach ($user->roles as $role)
             {
@@ -41,16 +42,16 @@ class LoginController extends Controller
             switch ($role->id)
             {
                 case 1:
-                    return redirect('/reports');
+                    return redirect('/home');
                     break;
                 case 2:
-                    return redirect('/reports');
+                    return redirect('/home');
                     break;
                 case 3:
-                    return redirect('/reports');
+                    return redirect('/home');
                     break;
                 case 4:
-                    return redirect('/reports');
+                    return redirect('/home');
                     break;
                 default:
                     return back()->withErrors([$this->username() => 'Verifica tu usuario y/o contraseña'])
