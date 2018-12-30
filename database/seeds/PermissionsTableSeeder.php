@@ -69,5 +69,13 @@ class PermissionsTableSeeder extends Seeder
             'slug' => 'reports.download',
             'description' => 'Download reports for any student.'
         ]);
+
+        /* Permissions for home */
+        Permission::create
+        ([
+            'name' => 'Access homepage',
+            'slug' => 'home.index',
+            'description' => 'Allow to access the homepage'
+        ]);
     }
 }
