@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,9 +26,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('updated_at', 'DESC')
-        ->paginate(5);
+        $users = User::all();
 
-        return view('home', compact('users'));
+        $user = Auth::user();
+
+
+        foreach ($user->roles as $role)
+        {
+            $role;
+        }
+
+        $ver = DB::table('role_user')
+            ->where('role_id', '=', 1)
+            ->get();
+
+
+        $results = DB::table('users')
+            ->join( 'role_user' , 'users.id' , '=' , 'role_user.id' )
+            ->select( 'users.name' , 'role_user.role_id' )
+            ->get();
+
+        foreach ($results as $result)
+        {
+            $result->role_id;
+        }
+
+
+        return view('home', compact('users', 'user', 'role', 'ver', 'results', 'result'));
     }
 }
