@@ -11,7 +11,7 @@
 
                     <div class="card-body shadow-lg p-3 bg-white rounded">
                         {!! Form::open(['route' => 'reports.store'])!!}
-                            @include('reports.include.form')
+                            @include('include.form')
                         {!! Form::close() !!}
                     </div>
                 </div>
