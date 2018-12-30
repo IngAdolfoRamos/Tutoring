@@ -94,14 +94,15 @@
             @endif
             @yield('content')
         </main>
+
     </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready( function ()
-    {
-        $('#users').DataTable();
-    });
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
+    <script>
+        $(document).ready( function ()
+        {
+            $('#users').DataTable();
+        });
+    </script>
 </body>
 </html>
