@@ -28,4 +28,4 @@ Route::middleware(['auth'])->group(function ()
     Route::get('reports/{report}/download', 'ReportController@download')->name('reports.download')->middleware('reports.download');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('permission:home.index');
