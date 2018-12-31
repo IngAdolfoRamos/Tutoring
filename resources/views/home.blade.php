@@ -10,17 +10,11 @@
                 @elseif($role->id == 4)
                     Estudiante
                 @endif
-                {{ $results }}
+                {{--{{ $results }}--}}
                     {{--@foreach($result as $r)--}}
                         {{--{{ $r }}--}}
                     {{--@endforeach--}}
 
-                    @foreach ($results as $re)
-                        {{--$re->role_id--}}
-                        @if($re->role_id == 4)
-                            <h1> {{ $re->name }} </h1>
-                        @endif
-                    @endforeach
                 <div class="card-header">Busqueda de alumnos</div>
 
                 <div class="card-body">
@@ -34,18 +28,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
-                            <tr>
-                                <td>{{ $user->record  }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td class="text-center">
-                                    <a href="{{route('reports.edit', $user->id)}}">
-                                        <i class="far fa-file-pdf fa-lg"></i>
+
+                        @foreach ($results as $re)
+                            @if($re->role_id == 4)
+                                <tr>
+                                    <td>{{ $re->record  }}</td>
+                                    <td>{{ $re->name }}</td>
+                                    <td>{{ $re->email }}</td>
+                                    <td class="text-center">
+                                    <a href="{{route('reports.edit', $re->id)}}">
+                                    <i class="far fa-file-pdf fa-lg"></i>
                                     </a>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
+
+                        {{--@foreach($users as $user)--}}
+                            {{--<tr>--}}
+                                {{--<td>{{ $user->record  }}</td>--}}
+                                {{--<td>{{ $user->name }}</td>--}}
+                                {{--<td>{{ $user->email }}</td>--}}
+                                {{--<td class="text-center">--}}
+                                    {{--<a href="{{route('reports.edit', $user->id)}}">--}}
+                                        {{--<i class="far fa-file-pdf fa-lg"></i>--}}
+                                    {{--</a>--}}
+                                {{--</td>--}}
+                            {{--</tr>--}}
+                        {{--@endforeach--}}
+
                         </tbody>
                     </table>
                 </div>
