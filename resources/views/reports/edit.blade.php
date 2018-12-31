@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="card-body shadow-lg p-3 bg-white rounded">
-                        {!! Form::open(['route' => ['reports.update'], 'method' => 'PUT'])!!}
+                        {!! Form::model(['route' => ['reports.update'], 'method' => 'PUT'])!!}
                             <div class="form-group">
                                 {{ Form::label('record', 'Numero de matricula') }}
                                 {{ Form::text('record', $user->record, ['class' => 'form-control']) }}
@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group">
                                 {{ Form::label('description', 'Descripcion del problema') }}
-                                {{ Form::text('description', $user->description, ['class' => 'form-control']) }}
+                                {{ Form::text('description', $re->description, ['class' => 'form-control']) }}
                             </div>
                             <div class="form-group">
                                 {{ Form::submit('Guardar', ['class' => 'bnt btn-sm btn-primary']) }}
