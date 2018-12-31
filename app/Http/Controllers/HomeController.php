@@ -43,7 +43,7 @@ class HomeController extends Controller
 
         $results = DB::table('users')
             ->join( 'role_user' , 'users.id' , '=' , 'role_user.id' )
-            ->select( 'users.name' , 'role_user.role_id' )
+            ->select( 'users.name' , 'role_user.role_id', 'users.record', 'users.email', 'users.id' )
             ->get();
 
         foreach ($results as $result)
