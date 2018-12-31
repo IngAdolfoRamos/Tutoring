@@ -77,7 +77,8 @@ class ReportController extends Controller
     {
         $user = User::find($id);
         $report = Report::find($id);
-        return view('reports.edit', compact('user','report'));
+        $re = $user->report;
+        return view('reports.edit', compact('user','report', 're'));
     }
 
     /**
