@@ -16,9 +16,9 @@ class PermissionsTableSeeder extends Seeder
         //See all students
         Permission::create
         ([
-            'name' => 'See students.',
-            'slug' => 'students.index',
-            'description' => 'See all students and some information generally.'
+            'name' => 'See students ID',
+            'slug' => 'students.digitalId',
+            'description' => 'Can access to the digital credential of every student.'
         ]);
 
         //See students details
@@ -75,7 +75,15 @@ class PermissionsTableSeeder extends Seeder
         ([
             'name' => 'Access homepage',
             'slug' => 'home.index',
-            'description' => 'Allow to access the homepage'
+            'description' => 'Allow to access the homepage.'
+        ]);
+
+        /* Permissions for students */
+        Permission::create
+        ([
+            'name' => 'See own digital ID.',
+            'slug' => 'students.index',
+            'description' => 'Can access just to its own ID.'
         ]);
     }
 }
