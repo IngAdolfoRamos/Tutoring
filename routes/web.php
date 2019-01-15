@@ -26,6 +26,12 @@ Route::middleware(['auth'])->group(function ()
     Route::get('reports/{report}/edit', 'ReportController@edit')->name('reports.edit')->middleware('permission:reports.edit');
     Route::put('reports/', 'ReportController@update')->name('reports.update')->middleware('permission:reports.edit');
     Route::get('reports/{report}/download', 'ReportController@download')->name('reports.download')->middleware('reports.download');
+
+    /* Students */
+    //Just for students
+    Route::get('students', 'StudentController@index')->name('students.index')->middleware('permission:students.index');
+    //For admin and tutor
+    Route::get('students/{student}', 'ReportController@digitalId')->name('students.digitalId')->middleware('permission:students.digitalId');
 });
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('permission:home.index');
