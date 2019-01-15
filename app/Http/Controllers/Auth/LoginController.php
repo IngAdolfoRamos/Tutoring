@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Person;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -31,7 +33,7 @@ class LoginController extends Controller
 //            return redirect()->route('home');
 
             $user = Auth::user();
-            
+
 
             foreach ($user->roles as $role)
             {
@@ -51,7 +53,22 @@ class LoginController extends Controller
                     return redirect('/home');
                     break;
                 case 4:
-                    return redirect('/home');
+//                    $id = $user->id;
+//
+//                    $user = User::find($id);
+//                    $record = $user->record;
+//                    $people = Person::where('record', $record)->get();
+//
+//                    foreach ($people as $person)
+//                    {
+//                        $person;
+//                        //echo $p->photo;
+//                    }
+                    //return $photo;
+                    //return $people;
+                    //return view('students.index', compact('user','person'));
+
+                    return redirect(route('students.index'));
                     break;
                 default:
                     return back()->withErrors([$this->username() => 'Verifica tu usuario y/o contraseña'])
