@@ -31,9 +31,15 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                @if(request()->is('home'))
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                @elseif(request()->is('students'))
+                    <a class="navbar-brand" href="{{ url('/students') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -68,7 +74,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Cerrar sesión
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -87,6 +93,14 @@
                 <div class="alert alert-danger alert-dismissible fade show col-8 offset-2 text-center" role="alert">
                     <strong>Ooops!!</strong>
                     {{ session('flash') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @elseif(session()->has('denied'))
+                <div class="alert alert-danger alert-dismissible fade show col-8 offset-2 text-center" role="alert">
+                    <strong>Ooops!!</strong>
+                    {{ session('denied') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
