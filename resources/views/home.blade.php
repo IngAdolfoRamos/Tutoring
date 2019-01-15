@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                @if($role->id == 1)
-                    Admin
-                @elseif($role->id == 4)
-                    Estudiante
-                @endif
+                {{--@if($role->id == 1)--}}
+                    {{--Admin--}}
+                {{--@elseif($role->id == 4)--}}
+                    {{--Estudiante--}}
+                {{--@endif--}}
                 {{--{{ $results }}--}}
                     {{--@foreach($result as $r)--}}
                         {{--{{ $r }}--}}
@@ -25,6 +25,7 @@
                                 <th>Nombre</th>
                                 <th>Email</th>
                                 <th>Reporte</th>
+                                <th>Credencial Digital</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,9 +37,14 @@
                                     <td>{{ $re->name }}</td>
                                     <td>{{ $re->email }}</td>
                                     <td class="text-center">
-                                    <a href="{{route('reports.edit', $re->id)}}">
-                                    <i class="far fa-file-pdf fa-lg"></i>
-                                    </a>
+                                        <a href="{{route('reports.edit', $re->id)}}">
+                                            <i class="far fa-file-pdf fa-lg"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{route('students.digitalId', $re->id)}}">
+                                            <i class="far fa-id-card fa-lg"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endif
