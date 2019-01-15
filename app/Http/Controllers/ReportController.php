@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Person;
 use App\Report;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -76,9 +78,33 @@ class ReportController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $report = Report::find($id);
-        $re = $user->report;
-        return view('reports.edit', compact('user','report', 're'));
+
+        $record = $user->record;
+
+        $report = Report::where('record', $record)->get();
+
+        foreach ($report as $r)
+        {
+            $r;
+        }
+
+        return view('reports.edit', compact('user','report','r'));
+    }
+
+    public function digitalId($id)
+    {
+        $user = User::find($id);
+        $record = $user->record;
+        $people = Person::where('record', $record)->get();
+
+        foreach ($people as $person)
+        {
+            $person;
+            //echo $p->photo;
+        }
+        //return $photo;
+
+        return view('students.index', compact('user','person'));
     }
 
     /**
