@@ -3,8 +3,12 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Access\AuthorizationException as AuthorizationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
@@ -60,6 +64,10 @@ class Handler extends ExceptionHandler
             return redirect('/')->with('rwl', 'Si necesitas ayuda adicional contacta a nuestro administrador.');
         }
 
+        if ($exception instanceof HttpException)
+        {
+            return Redirect::back()->with('denied','No tienes los permisos suficientes para poder acceder a la pagina solicitada.');
+        }
 
         return parent::render($request, $exception);
     }
