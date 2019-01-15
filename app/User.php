@@ -38,4 +38,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Report::class);
     }
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
 }
